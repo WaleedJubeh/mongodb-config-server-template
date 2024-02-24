@@ -1,0 +1,13 @@
+version: '3'
+services:
+  configserver:
+    image: mongo:latest
+    container_name: configserver
+    command: mongod --configsvr --replSet configReplSet --bind_ip_all --port 27015 # --bind_ip localhost,192.51.100.1
+    ports:
+      - "27015:27015"
+    volumes:
+      - configdb:/data/db
+
+volumes:
+  configdb:
